@@ -1,0 +1,71 @@
+/* Police Google Fonts recommandée : 'Montserrat' */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+
+body {
+  background: #111; /* Noir profond */
+  color: #FFD600;   /* Jaune vif */
+  font-family: 'Montserrat', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #FFD600;
+  margin-bottom: 40px;
+  text-shadow: 0 2px 10px #000, 0 0px 30px #FFD60088;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.shadow__btn {
+  padding: 12px 32px;
+  border: none;
+  font-size: 18px;
+  color: #111;
+  border-radius: 7px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #FFD600;
+  box-shadow: 0 0 25px #FFD600;
+  transition: 0.5s;
+  transition-property: box-shadow, background, color;
+  cursor: pointer;
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px #FFD600,
+              0 0 25px #FFD600,
+              0 0 50px #FFD600,
+              0 0 100px #FFD600;
+  background: #fff700;
+  color: #000;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .shadow__btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+

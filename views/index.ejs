@@ -1,0 +1,14 @@
+
+<%- include('partials/header') %>
+
+
+<div class="container">
+    <h1>Welcome to Animoo .We’ve been waiting for you! 😉</h1>
+    <form action="/quiz" method="POST">
+        <button name="mode" value="anime" class="shadow__btn">Guess the Anime</button>
+        <button name="mode" value="character" class="shadow__btn">Guess the Character</button>
+        <button name="mode" value="facts" class="shadow__btn">Anime Facts</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
