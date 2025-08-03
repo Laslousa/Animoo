@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let titleToGuess = document.getElementById("titleToGuess").getAttribute("value");
   let titles = document.getElementsByClassName("animeBtn");
   let form = document.getElementById("quizForm");
+  let score = document.getElementById("score").getAttribute("value");
 
   for (let i = 0; i < titles.length; i++) {
     titles[i].addEventListener("click", function () {
@@ -12,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (titles[i].innerText.trim().toLowerCase() === titleToGuess.trim().toLowerCase()) {
         titles[i].classList.add("correct");
+        score ++ ;
+        document.getElementById("score").setAttribute("value", score);
       } else {
         titles[i].classList.add("incorrect");
         // Affiche aussi la bonne réponse en vert

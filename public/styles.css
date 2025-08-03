@@ -44,6 +44,12 @@ form {
   transition: 0.5s;
   transition-property: box-shadow, background, color;
   cursor: pointer;
+  min-width: 300px;
+  max-width: 300px;
+  text-align: center;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .shadow__btn:hover {
@@ -90,6 +96,12 @@ button {
   transition: 0.3s;
   cursor: pointer;
   outline: none;
+  min-width: 400px; /* largeur minimale identique */
+  max-width: 400px; /* largeur maximale identique */
+  text-align: center;
+  white-space: normal; /* permet le retour à la ligne si le texte est long */
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .animeBtn:hover {
@@ -153,6 +165,7 @@ button {
   /* ...tes styles existants... */
   position: relative;
   z-index: 1;
+  
 }
 
 .animeBtn.correct {
