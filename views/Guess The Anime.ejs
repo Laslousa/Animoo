@@ -1,20 +1,21 @@
 <%- include('partials/header') %>
 
-    <img src="<%= animeToGuess.image %>" alt="Guess the Anime" class="img-fluid mb-4">
+    <div class="score-box">Score: <%= animeScore %>
+    </div>
 
-    <p>
-        <%= animeToGuess.synopsis %>
-    </p>
-    <div class="container">
+    <img src="<%= animeToGuess.image %>" alt="Guess the Anime" class="img-fluid">
+
+
+    <div class="propositions">
         <form action="/quiz" method="POST">
             <input type="hidden" id="titleToGuess" value="<%= animeToGuess.title_english %>">
-            <input  id="score" name="score" value="<%= animeScore %>">
+            <input type="hidden" id="score" name="score" value="<%= animeScore %>">
             <% for(let i=0 ; i<titles.length; i++) { %>
-                <button name="mode" value="anime" class="animeBtn"><%= titles[i] %></button>
-            <% } %>
+                <button name="mode" value="anime" class="animeBtn">
+                    <%= titles[i] %>
+                </button>
+                <% } %>
         </form>
     </div>
-   
 
-
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

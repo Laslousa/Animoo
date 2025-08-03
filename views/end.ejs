@@ -1,19 +1,10 @@
 <%- include('partials/header') %>
 
-<% if(mode === "anime"){ %>
-    <p>Congratulations! You've completed the Anime quiz.</p>
-    <p>Your score: <%= animeScore %></p>
-
-
-
-
-
-<% } else if(mode === "character") { %>
-
-
-
-
-
-<% }else if (mode === "facts"){} %>
+<div class="end-container">
+  <h2>Quiz Finished!</h2>
+  <p>Your score: <%= animeScore %> / 5</p>
+  <p>Thank you for participating in the quiz!</p>
+  <p>We hope you enjoyed testing your anime knowledge.</p>
+</div>
 
 <%- include('partials/footer') %>
