@@ -111,20 +111,6 @@ button {
   margin-right: auto;
 }
 
-/* --- Score styling --- */
-.score-box {
-  background: #181818;
-  color: #ffd600;
-  font-weight: 700;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  padding: 10px 24px;
-  margin: 0 auto 24px auto;
-  box-shadow: 0 0 12px #ffd60044;
-  text-align: center;
-  max-width: 200px;
-}
-
 /* --- End page styling --- */
 .end-container {
   background: #181818;
@@ -161,4 +147,36 @@ button {
     flex-direction: column;
     gap: 12px;
   }
+}
+
+.animeBtn {
+  /* ...tes styles existants... */
+  position: relative;
+  z-index: 1;
+}
+
+.animeBtn.correct {
+  background: linear-gradient(90deg, #00ff88 60%, #181818 100%);
+  color: #fff;
+  box-shadow: 0 0 40px #00ff88, 0 0 10px #181818;
+  animation: correctAnim 0.7s ease;
+}
+
+.animeBtn.incorrect {
+  background: linear-gradient(90deg, #ff0044 60%, #181818 100%);
+  color: #fff;
+  box-shadow: 0 0 40px #ff0044, 0 0 10px #181818;
+  animation: incorrectAnim 0.7s ease;
+}
+
+@keyframes correctAnim {
+  0% { box-shadow: 0 0 0px #00ff88; }
+  50% { box-shadow: 0 0 40px #00ff88; }
+  100% { box-shadow: 0 0 0px #00ff88; }
+}
+
+@keyframes incorrectAnim {
+  0% { box-shadow: 0 0 0px #ff0044; }
+  50% { box-shadow: 0 0 40px #ff0044; }
+  100% { box-shadow: 0 0 0px #ff0044; }
 }

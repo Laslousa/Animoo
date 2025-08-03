@@ -47,7 +47,7 @@ app.post("/quiz", async (req, res) => {
     animeTracker++;
     if (animeTracker <= 5) {
       const titles = [];
-      const animeToGuess = { image: "", title_english: ""};
+      const animeToGuess = { image: "", title_english: "", synopsis: "" };
       for (let i = 0; i < 5; i++) {
         let ok = false;
         while (!ok) {
@@ -60,6 +60,10 @@ app.post("/quiz", async (req, res) => {
             if (i === 0) {
               animeToGuess.image = anime.images.jpg.image_url;
               animeToGuess.title_english = title;
+              animeToGuess.synopsis = (anime.synopsis || "").replace(
+                "[Written by MAL Rewrite]",
+                ""
+              );
             }
           }
         }

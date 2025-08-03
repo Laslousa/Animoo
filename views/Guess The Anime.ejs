@@ -1,17 +1,13 @@
 <%- include('partials/header') %>
-
-    <div class="score-box">Score: <%= animeScore %>
-    </div>
-
     <img src="<%= animeToGuess.image %>" alt="Guess the Anime" class="img-fluid">
 
-
     <div class="propositions">
-        <form action="/quiz" method="POST">
+        <form id="quizForm" action="/quiz" method="POST">
             <input type="hidden" id="titleToGuess" value="<%= animeToGuess.title_english %>">
             <input type="hidden" id="score" name="score" value="<%= animeScore %>">
+            <input type="hidden" name="mode" value="anime">
             <% for(let i=0 ; i<titles.length; i++) { %>
-                <button name="mode" value="anime" class="animeBtn">
+                <button name="mode" value="anime" class="animeBtn" type="button" data-title="<%= titles[i] %>">
                     <%= titles[i] %>
                 </button>
                 <% } %>
