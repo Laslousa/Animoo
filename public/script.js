@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         input.value = titles[i].innerText;
         form.appendChild(input);
         form.submit();
-      }, 700);
+      }, 1000);
     });
   }
 });
