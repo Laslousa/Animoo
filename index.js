@@ -8,7 +8,9 @@ const URL = "https://api.jikan.moe/v4/";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let cachedAnimes = [];
+
+// Function to fetch anime data from Jikan API
+// This function fetches the top 4 pages of anime ordered by popularity,
 async function Animes() {
   try {
     let AllAnimes = [];
@@ -20,7 +22,7 @@ async function Animes() {
       AllAnimes = AllAnimes.concat(result);
       await new Promise((r) => setTimeout(r, 1000)); // Respecte le rate limit
     }
-    // Remove the first anime (the most popular one)
+    // Remove the first anime (popularity = 0)
     AllAnimes.shift();
     // Shuffle the array
     AllAnimes = AllAnimes.sort(() => Math.random() - 0.5);
@@ -30,6 +32,7 @@ async function Animes() {
     return res.status(500).send("Error fetching anime data");
   }
 }
+let cachedAnimes = [];
 cachedAnimes = await Animes();
 let animeTracker = 0;
 let animeScore = 0;
@@ -39,6 +42,12 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
+  res.render("index.ejs");
+});
+
+app.post("/Home", (req, res) => {
+  animeTracker = 0;
+  animeScore = 0;
   res.render("index.ejs");
 });
 

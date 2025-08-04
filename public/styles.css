@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap");
 
 body {
-  background: #111; /* Noir profond */
-  color: #ffd600; /* Jaune vif */
+  background: #111;
+  color: #ffd600;
   font-family: "Montserrat", Arial, sans-serif;
   min-height: 100vh;
   margin: 0;
@@ -13,14 +13,13 @@ body {
   justify-content: center;
 }
 
-h1 {
-  font-size: 3rem;
+h1,
+h2 {
   font-weight: 700;
   letter-spacing: 2px;
   color: #ffd600;
-  margin-bottom: 40px;
-  text-shadow: 0 2px 10px #000, 0 0px 30px #ffd60088;
   text-align: center;
+  text-shadow: 0 2px 10px #000, 0 0px 30px #ffd60088;
 }
 
 form {
@@ -28,6 +27,9 @@ form {
   flex-direction: column;
   gap: 25px;
   align-items: center;
+}
+.main-title {
+  margin-bottom: 48px;
 }
 
 .shadow__btn {
@@ -70,6 +72,8 @@ button {
   .shadow__btn {
     font-size: 16px;
     padding: 10px 20px;
+    min-width: 300px;
+    max-width: 300px;
   }
 }
 
@@ -96,12 +100,14 @@ button {
   transition: 0.3s;
   cursor: pointer;
   outline: none;
-  min-width: 400px; /* largeur minimale identique */
-  max-width: 400px; /* largeur maximale identique */
+  min-width: 400px;
+  max-width: 400px;
   text-align: center;
-  white-space: normal; /* permet le retour à la ligne si le texte est long */
+  white-space: normal;
   word-break: break-word;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 .animeBtn:hover {
@@ -109,6 +115,44 @@ button {
   color: #000;
   box-shadow: 0 0 40px #ffd600, 0 0 10px #181818;
   transform: translateY(-2px) scale(1.05);
+}
+
+.animeBtn.correct {
+  background: linear-gradient(90deg, #00ff88 60%, #181818 100%);
+  color: #fff;
+  box-shadow: 0 0 40px #00ff88, 0 0 10px #181818;
+  animation: correctAnim 0.7s ease;
+}
+
+.animeBtn.incorrect {
+  background: linear-gradient(90deg, #ff0044 60%, #181818 100%);
+  color: #fff;
+  box-shadow: 0 0 40px #ff0044, 0 0 10px #181818;
+  animation: incorrectAnim 0.7s ease;
+}
+
+@keyframes correctAnim {
+  0% {
+    box-shadow: 0 0 0px #00ff88;
+  }
+  50% {
+    box-shadow: 0 0 40px #00ff88;
+  }
+  100% {
+    box-shadow: 0 0 0px #00ff88;
+  }
+}
+
+@keyframes incorrectAnim {
+  0% {
+    box-shadow: 0 0 0px #ff0044;
+  }
+  50% {
+    box-shadow: 0 0 40px #ff0044;
+  }
+  100% {
+    box-shadow: 0 0 0px #ff0044;
+  }
 }
 
 /* --- Image styling --- */
@@ -136,60 +180,83 @@ button {
 
 .end-container h2 {
   color: #ffd600;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 24px #ffd60088;
 }
 
+/* --- Texts --- */
 .end-container p {
   color: #fff;
   font-size: 1.1rem;
   margin-bottom: 18px;
+  text-shadow: 0 0 8px #ffd60022;
 }
 
-.end-container .shadow__btn {
-  margin-top: 18px;
+.end-container .challenge {
+  color: #ffd600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
-/* --- Responsive --- */
-@media (max-width: 700px) {
-  .img-fluid {
-    max-width: 90vw;
+.end-container .challenge-emoji {
+  animation: pulse 1.2s infinite alternate;
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+@keyframes pulse {
+  0% {
+    filter: brightness(1);
   }
-  .propositions {
-    flex-direction: column;
-    gap: 12px;
+  100% {
+    filter: brightness(2);
   }
 }
-
-.animeBtn {
-  /* ...tes styles existants... */
-  position: relative;
-  z-index: 1;
-  
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto 32px auto;
+  padding: 18px 32px;
+  background: linear-gradient(90deg, #181818 60%, #ffd600 100%);
+  border-radius: 16px;
+  box-shadow: 0 0 24px #ffd60044;
+  max-width: 260px;
 }
 
-.animeBtn.correct {
-  background: linear-gradient(90deg, #00ff88 60%, #181818 100%);
+.score-label {
+  color: #ffd600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px #18181888;
+}
+
+.score-value {
   color: #fff;
-  box-shadow: 0 0 40px #00ff88, 0 0 10px #181818;
-  animation: correctAnim 0.7s ease;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px #ffd60088;
+}
+/* --- Score message --- */
+.score-message {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffd600;
+  margin-bottom: 18px;
+  margin-top: -8px;
+  text-shadow: 0 0 10px #18181888, 0 0 24px #ffd60044;
+  letter-spacing: 1px;
+  animation: popScore 0.7s;
 }
 
-.animeBtn.incorrect {
-  background: linear-gradient(90deg, #ff0044 60%, #181818 100%);
-  color: #fff;
-  box-shadow: 0 0 40px #ff0044, 0 0 10px #181818;
-  animation: incorrectAnim 0.7s ease;
-}
-
-@keyframes correctAnim {
-  0% { box-shadow: 0 0 0px #00ff88; }
-  50% { box-shadow: 0 0 40px #00ff88; }
-  100% { box-shadow: 0 0 0px #00ff88; }
-}
-
-@keyframes incorrectAnim {
-  0% { box-shadow: 0 0 0px #ff0044; }
-  50% { box-shadow: 0 0 40px #ff0044; }
-  100% { box-shadow: 0 0 0px #ff0044; }
+@keyframes popScore {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }

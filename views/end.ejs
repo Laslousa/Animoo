@@ -2,9 +2,46 @@
 
 <div class="end-container">
   <h2>Quiz Finished!</h2>
-  <p>Your score: <%= animeScore %> / 5</p>
-  <p>Thank you for participating in the quiz!</p>
-  <p>We hope you enjoyed testing your anime knowledge.</p>
+  <div class="score-display">
+    <span class="score-label">Your score</span>
+    <span class="score-value"><%= animeScore %> / 5</span>
+  </div>
+  <% if (animeScore === 5) { %>
+    <p class="score-message">
+      	🥇 Otaku Overlord! You eat ramen with Naruto and flex with Goku.
+    </p>
+  <% } else if (animeScore === 4) { %>
+    <p class="score-message">
+      🔥 Almost flawless! Your power level is over 9000.
+    </p>
+  <% } else if (animeScore === 3) { %>
+    <p class="score-message">
+      	😎 Not bad! You're definitely shonen-worthy.
+    </p>
+  <% } else if (animeScore === 2) { %>
+    <p class="score-message">
+      🤔 Hmm... Do you actually watch anime, or just collect figures?
+    </p>
+  <% } else if (animeScore === 1) { %>
+    <p class="score-message">
+      🥲 One answer right? Even Yamcha did better than that.
+    </p>
+  <% } else if (animeScore === 0) { %>
+    <p class="score-message">
+      	💀 0/5?! You’ve been banned from the anime club. Go watch some classics. Immediately.
+    </p>
+  <% } %>
+  <p>
+    🚀 Thank you for playing Animoo!
+  </p>
+  <p class="challenge">
+    <span class="challenge-emoji">🤖</span> Ready for another challenge?
+  </p>
+  <form action="/Home" method="POST" style="margin-top:24px;">
+    <button type="submit" class="shadow__btn">
+      🏠 Home
+    </button>
+  </form>
 </div>
 
 <%- include('partials/footer') %>

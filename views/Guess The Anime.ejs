@@ -7,7 +7,7 @@
             <input type="hidden" id="score" name="score" value="<%= animeScore %>">
             <input type="hidden" name="mode" value="anime">
             <% for(let i=0 ; i<titles.length; i++) { %>
-                <button name="mode" value="anime" class="animeBtn" type="button" data-title="<%= titles[i] %>">
+                <button type="button" class="animeBtn" data-title="<%= titles[i] %>">
                     <%= titles[i] %>
                 </button>
                 <% } %>
