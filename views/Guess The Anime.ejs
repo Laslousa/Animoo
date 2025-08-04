@@ -2,12 +2,12 @@
     <img src="<%= animeToGuess.image %>" alt="Guess the Anime" class="img-fluid">
 
     <div class="propositions">
-        <form id="quizForm" action="/quiz" method="POST">
-            <input type="hidden" id="titleToGuess" value="<%= animeToGuess.title_english %>">
-            <input type="hidden" id="score" name="score" value="<%= animeScore %>">
-            <input type="hidden" name="mode" value="anime">
+        <form id="animeForm" action="/quiz" method="POST">
+            <input type="hidden" id="titleToGuess" name="titleToGuess" value="<%= animeToGuess.title_english %>">
+            <input type="hidden" name="mode" value="anime" id="mode">
+            <input type="hidden" id="chosenAnimeTitle" name="chosenAnimeTitle" value="">
             <% for(let i=0 ; i<titles.length; i++) { %>
-                <button type="button" class="animeBtn" data-title="<%= titles[i] %>">
+                <button type="button" class="animeBtn">
                     <%= titles[i] %>
                 </button>
                 <% } %>

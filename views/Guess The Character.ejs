@@ -1,3 +1,16 @@
 <%- include('partials/header') %>
+    <img src="<%= characterToGuess.image %>" alt="Guess the Character" class="img-fluid">
 
+    <div class="propositions">
+        <form id="characterForm" action="/quiz" method="POST">
+            <input type="hidden" id="nameToGuess" name="nameToGuess" value="<%= characterToGuess.name %>">
+            <input type="hidden" name="mode" value="character" id="mode">
+            <input type="hidden" id="chosenCharacterName" name="chosenCharacterName" value="">
+            <% for(let i=0 ; i<characterNames.length; i++) { %>
+                <button type="button" class="characterBtn">
+                    <%= characterNames[i] %>
+                </button>
+                <% } %>
+        </form>
+    </div>
 <%- include('partials/footer') %>

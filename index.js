@@ -32,10 +32,34 @@ async function Animes() {
     return res.status(500).send("Error fetching anime data");
   }
 }
+
+async function Characters() {
+  try {
+    let AllCharacters = [];
+    for (let page = 1; page <= 4; page++) {
+      const response = await axios.get(URL + "characters", {
+        params: { order_by: "favorites", page: page , sort: "desc" },
+      });
+      const result = response.data.data;
+      AllCharacters = AllCharacters.concat(result);
+      await new Promise((r) => setTimeout(r, 1000)); // Respecte le rate limit
+    }
+    // shuffle the array
+    AllCharacters = AllCharacters.sort(() => Math.random() - 0.5);
+    return AllCharacters;
+  } catch (error) {
+    console.error("Error fetching character data:", error);
+    return res.status(500).send("Error fetching character data");
+  }
+}
 let cachedAnimes = [];
+let cachedCharacters = [];
 cachedAnimes = await Animes();
+cachedCharacters = await Characters();
 let animeTracker = 0;
+let characterTracker = 0;
 let animeScore = 0;
+let characterScore = 0;
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
@@ -48,11 +72,16 @@ app.get("/", (req, res) => {
 app.post("/Home", (req, res) => {
   animeTracker = 0;
   animeScore = 0;
+  characterTracker = 0;
+  characterScore = 0;
   res.render("index.ejs");
 });
 
 app.post("/quiz", async (req, res) => {
   if (req.body.mode === "anime") {
+    if (req.body.titleToGuess && req.body.chosenAnimeTitle && req.body.titleToGuess.trim().toLowerCase() === req.body.chosenAnimeTitle) {
+      animeScore++;
+    }
     animeTracker++;
     if (animeTracker <= 5) {
       const titles = [];
@@ -74,16 +103,47 @@ app.post("/quiz", async (req, res) => {
         }
       }
       titles.sort(() => Math.random() - 0.5); // Shuffle the titles
-      animeScore = parseInt(req.body.score) || 0;
       res.render("Guess The Anime.ejs", {
         titles: titles,
         animeToGuess: animeToGuess,
-        animeScore: animeScore,
       });
     } else {
-      animeScore = parseInt(req.body.score) || 0;
-      res.render("end.ejs", { mode: "anime", animeScore: animeScore });
+      res.render("end.ejs", { score: animeScore });
     }
   } else if (req.body.mode === "character") {
+    characterTracker++;
+    if (req.body.nameToGuess && req.body.chosenCharacterName && req.body.nameToGuess.trim().toLowerCase() === req.body.chosenCharacterName) {
+      characterScore++;
+    }
+    if (characterTracker <= 5){
+      const characterNames = [];
+      const characterToGuess = { image: "", name: "" };
+      for (let i=0; i<5 ; i++) {
+        let ok = false ;
+        while (!ok) {
+          let index = Math.floor(Math.random() * cachedCharacters.length);
+          let character = cachedCharacters[index];
+          let name = character.name;
+          if (!characterNames.includes(name)) {
+            characterNames.push(name);
+            ok = true;
+            if (i === 0) {
+              characterToGuess.image = character.images.jpg.image_url;
+              characterToGuess.name = name;
+            }
+          }
+        }
+      }
+      characterNames.sort(() => Math.random() - 0.5); // Shuffle the names
+      res.render("Guess The Character.ejs", {
+        characterNames: characterNames,
+        characterToGuess: characterToGuess,
+      });
+
+    } else {
+      res.render("end.ejs", { score: characterScore });
+    }
+  } else if (req.body.mode === "facts") {
+
   }
 });

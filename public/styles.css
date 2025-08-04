@@ -86,7 +86,7 @@ button {
   margin-bottom: 24px;
 }
 
-.animeBtn {
+.animeBtn , .characterBtn {
   padding: 14px 28px;
   border: none;
   font-size: 1.1rem;
@@ -110,21 +110,21 @@ button {
   z-index: 1;
 }
 
-.animeBtn:hover {
+.animeBtn:hover , .characterBtn:hover {
   background: #ffd600;
   color: #000;
   box-shadow: 0 0 40px #ffd600, 0 0 10px #181818;
   transform: translateY(-2px) scale(1.05);
 }
 
-.animeBtn.correct {
+.animeBtn.correct , .characterBtn.correct {
   background: linear-gradient(90deg, #00ff88 60%, #181818 100%);
   color: #fff;
   box-shadow: 0 0 40px #00ff88, 0 0 10px #181818;
   animation: correctAnim 0.7s ease;
 }
 
-.animeBtn.incorrect {
+.animeBtn.incorrect , .characterBtn.incorrect {
   background: linear-gradient(90deg, #ff0044 60%, #181818 100%);
   color: #fff;
   box-shadow: 0 0 40px #ff0044, 0 0 10px #181818;
