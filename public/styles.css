@@ -110,6 +110,15 @@ button {
   z-index: 1;
 }
 
+@media (max-width: 600px) {
+  .animeBtn, .characterBtn {
+    min-width: 300px;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+}
+
 .animeBtn:hover , .characterBtn:hover {
   background: #ffd600;
   color: #000;
