@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const URL = "https://api.jikan.moe/v4/";
 
 app.use(express.urlencoded({ extended: true }));
