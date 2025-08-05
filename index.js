@@ -19,7 +19,7 @@ async function Animes() {
       });
       const result = response.data.data;
       AllAnimes = AllAnimes.concat(result);
-      await new Promise((r) => setTimeout(r, 600)); // Respecte le rate limit
+      await new Promise((r) => setTimeout(r, 1000)); // Respecte le rate limit
     }
     // Remove the first anime (popularity = 0)
     AllAnimes.shift();
@@ -28,7 +28,7 @@ async function Animes() {
     return AllAnimes;
   } catch (error) {
     console.error("Error fetching anime data:", error);
-    return res.status(500).send("Error fetching anime data");
+    throw new Error("Error fetching anime data");
   }
 }
 
@@ -41,14 +41,14 @@ async function Characters() {
       });
       const result = response.data.data;
       AllCharacters = AllCharacters.concat(result);
-      await new Promise((r) => setTimeout(r, 600)); // Respecte le rate limit
+      await new Promise((r) => setTimeout(r, 1000)); // Respecte le rate limit
     }
     // shuffle the array
     AllCharacters = AllCharacters.sort(() => Math.random() - 0.5);
     return AllCharacters;
   } catch (error) {
     console.error("Error fetching character data:", error);
-    return res.status(500).send("Error fetching character data");
+    throw new Error("Error fetching character data");
   }
 }
 let cachedAnimes = [];
