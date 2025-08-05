@@ -260,3 +260,219 @@ button {
   60% { transform: scale(1.1); opacity: 1; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* --- end Facts styling --- */
+.facts-end-container {
+  background: #181818;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px #ffd60044, 0 0 12px #181818;
+  padding: 40px 32px;
+  margin: 48px auto;
+  max-width: 480px;
+  text-align: center;
+}
+
+.facts-end-title {
+  color: #ffd600;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  text-shadow: 0 0 24px #ffd60088;
+  animation: popScore 0.8s;
+}
+
+.facts-end-message {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 28px;
+  text-shadow: 0 0 8px #ffd60022;
+  line-height: 1.5;
+}
+
+.facts-emoji {
+  color: #ffd600;
+  font-size: 1.3em;
+  font-weight: 700;
+  animation: pulse 1.2s infinite alternate;
+}
+/* --- Anime Facts styling --- */
+
+.facts-card {
+  background: #181818;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px #ffd60044, 0 0 12px #181818;
+  padding: 32px 24px;
+  margin: 48px auto;
+  max-width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.facts-img {
+  max-width: 180px;
+  border-radius: 1rem;
+  box-shadow: 0 0 24px #ffd60044;
+  margin-bottom: 18px;
+}
+
+.facts-title {
+  color: #ffd600;
+  font-size: 1.7rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px #ffd60088;
+}
+
+.facts-fact h2 {
+  background: linear-gradient(90deg, #ffd600 60%, #181818 100%);
+  color: #181818;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 18px 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 0 18px #ffd60044;
+  text-shadow: 0 0 8px #ffd60022;
+  animation: popScore 0.8s;
+}
+
+@media (max-width: 600px) {
+  .facts-card, .facts-end-container {
+    padding: 16px 6px;
+    max-width: 98vw;
+  }
+  .facts-title {
+    font-size: 1.1rem;
+  }
+  .facts-fact h2 {
+    font-size: 1rem;
+    padding: 12px 6px;
+  }
+}
+
+/* Social Card Futuriste Footer */
+.card.social-footer {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  min-height: 36px;
+  background: #181818; 
+  border-radius: 115px;
+  padding: 10px 18px;
+  box-shadow: 0 0 24px #ffd60044;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px; 
+}
+
+.social-icons {
+  cursor: pointer;
+  display: flex;
+  transition: all 0.5s;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #ffd600;
+  font-weight: bold;
+  font-size: small;
+}
+
+.social-icons > svg {
+  position: relative;
+  z-index: 2; /* Toujours au-dessus */
+  margin: 0 4px;
+}
+
+.social-icons > p {
+  --var: -0%;
+  position: absolute;
+  top: calc(var(--var) - 20px);
+  transition: all 0.7s;
+  background-color: #00b7ff;
+  border-radius: 7px;
+  opacity: 0;
+  padding-inline: 7px;
+  padding-block: 3px;
+  width: max-content;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+}
+.social-icons > p::after {
+  content: "";
+  position: absolute;
+  border-top: 10px solid #00b7ff;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+.social-icons > a {
+  --var: -0%;
+  position: absolute;
+  bottom: calc(var(--var) - 20px);
+  width: max-content;
+  transition: all 0.7s;
+  opacity: 0;
+  padding-inline: 7px;
+  padding-block: 3px;
+  background-color: #ffd600;
+  border-radius: 7px;
+  color: #181818;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 1;
+}
+.social-icons > a::after {
+  content: "";
+  position: absolute;
+  border-bottom: 10px solid #ffd600;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.social-icons:hover > a,
+.social-icons:hover > p {
+  --var: -65%;
+  opacity: 1;
+}
+
+.social-icons:hover {
+  z-index: 15;
+}
+
+.card.social-footer:hover > .social-icons:not(:hover) {
+  filter: blur(3px);
+  transform: scale(0.8);
+}
+
+.card.social-footer svg {
+  height: 24px;
+  width: 24px;
+}
+
+
+@media (max-width: 600px) {
+  .card.social-footer {
+    left: 12px;
+    bottom: 12px;
+    padding: 6px 4px;
+    gap: 20px;
+  }
+  .card.social-footer svg {
+    height: 24px;
+    width: 24px;
+  }
+}

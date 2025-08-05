@@ -1,3 +1,21 @@
 <%- include('partials/header') %>
 
+<div class="facts-card">
+  <img src="<%= anime.image %>" alt="Anime Image" class="facts-img">
+  <h1 class="facts-title"><%= anime.title_english %></h1>
+  <div class="facts-fact">
+    <h2><%= fact %></h2>
+  </div>
+  <form action="/quiz" method="POST">
+    <input type="hidden" name="mode" value="facts">
+    <button type="submit" class="shadow__btn">
+        <% if(factTracker < 5) { %>
+        One More!
+        <% } else { %>
+        Owarida! (終わりだ)
+        <% } %>
+    </button>
+  </form>
+</div>
+
 <%- include('partials/footer') %>
